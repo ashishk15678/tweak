@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tweak",
+  "compatibility_date": "2026-03-03",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "./worker/index.ts",
+  "assets": {
+    "not_found_handling": "none",
+    "binding": "ASSETS",
+    "directory": "dist",
+  },
+  "images": {
+    "binding": "IMAGES",
+  },
+}
