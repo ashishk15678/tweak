@@ -2,19 +2,20 @@
 
 import React, { useState, type CSSProperties } from "react";
 import { useDesign } from "../../lib/design-context";
-import { Layers, Sliders } from "lucide-react";
+import { Layers, Sliders, Mail } from "lucide-react";
 import { useChromeColors, useIsMobile } from "./hooks";
 import { DesignPicker } from "./design-picker";
-import { DashboardPreview } from "../component-previews";
+import { DashboardPreview } from "../previews/dashboard-preview";
+import { MailsPreview } from "../previews/mails-preview";
 import { ComponentShowcase } from "../component-showcase";
+
+type ViewTab = "dashboard" | "mails" | "components";
 
 export function CenterArea() {
   const c = useChromeColors();
   const { state } = useDesign();
   const isMobile = useIsMobile();
-  const [activeView, setActiveView] = useState<"dashboard" | "components">(
-    "dashboard",
-  );
+  const [activeView, setActiveView] = useState<ViewTab>("dashboard");
 
   const tabStyle = (active: boolean): CSSProperties => ({
     display: "inline-flex",
@@ -74,6 +75,13 @@ export function CenterArea() {
             Dashboard
           </button>
           <button
+            onClick={() => setActiveView("mails")}
+            style={tabStyle(activeView === "mails")}
+          >
+            <Mail size={14} />
+            Mails
+          </button>
+          <button
             onClick={() => setActiveView("components")}
             style={tabStyle(activeView === "components")}
           >
@@ -110,6 +118,23 @@ export function CenterArea() {
             }}
           >
             <DashboardPreview />
+          </div>
+        ) : activeView === "mails" ? (
+          /* Mails preview - uses the active design's own background */
+          <div
+            style={{
+              borderRadius: "14px",
+              border: `1px solid ${c.panelBorder}`,
+              backgroundColor: state.colors.background,
+              color: state.colors.text,
+              fontFamily: `"${state.fontBody}", system-ui, sans-serif`,
+              overflow: "auto",
+              padding: isMobile ? "12px" : "20px",
+              WebkitOverflowScrolling: "touch",
+              transition: "all 0.3s ease",
+            }}
+          >
+            <MailsPreview />
           </div>
         ) : (
           /* Components showcase with copy-paste code */

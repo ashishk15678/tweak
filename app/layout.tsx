@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Clarity from "@microsoft/clarity";
 
 export const metadata: Metadata = {
   title: "DesignTweak — Style Explorer",
@@ -12,6 +13,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const projectId = "vr2vchzydg";
+  Clarity.init(projectId);
   return (
     <html lang="en" suppressHydrationWarning>
       <head>

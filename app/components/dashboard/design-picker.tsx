@@ -45,7 +45,7 @@ export function DesignPicker() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "stretch",
+                alignItems: "left",
                 gap: "0",
                 padding: "0",
                 borderRadius: "12px",
@@ -71,21 +71,13 @@ export function DesignPicker() {
                 }
               }}
             >
-              {/* Color bar at top */}
-              <div
-                style={{
-                  height: "4px",
-                  background: `linear-gradient(90deg, ${presetColors.primary}, ${presetColors.secondary}, ${presetColors.accent})`,
-                  width: "100%",
-                }}
-              />
               <div
                 style={{
                   padding: isMobile ? "10px 12px" : "12px 16px",
                   display: "flex",
                   flexDirection: "column",
-                  alignItems: "center",
-                  gap: "4px",
+                  alignItems: "left",
+                  gap: "1px",
                 }}
               >
                 <span

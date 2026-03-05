@@ -367,8 +367,9 @@ export function ColorsPanel({ onClose }: { onClose?: () => void }) {
                   cursor: "pointer",
                   transition: "all 0.15s",
                   fontFamily: "inherit",
-                  minHeight: "44px",
+                  minHeight: "4px",
                   overflow: "hidden",
+                  background: `linear-gradient(90deg, ${pColors[0]}, ${pColors[1] || pColors[0]}, ${pColors[2] || pColors[0]})`,
                 }}
                 onMouseEnter={(e) =>
                   (e.currentTarget.style.backgroundColor = c.hoverBg)
@@ -377,19 +378,12 @@ export function ColorsPanel({ onClose }: { onClose?: () => void }) {
                   (e.currentTarget.style.backgroundColor = "transparent")
                 }
               >
-                <div
-                  style={{
-                    height: "6px",
-                    background: `linear-gradient(90deg, ${pColors[0]}, ${pColors[1] || pColors[0]}, ${pColors[2] || pColors[0]})`,
-                    width: "100%",
-                  }}
-                />
                 <span
                   style={{
                     fontSize: "9px",
-                    color: c.textMuted,
+                    color: c.textPrimary,
                     fontWeight: 500,
-                    padding: "6px 4px 6px",
+                    padding: "6px 2px ",
                   }}
                 >
                   {p.name}
