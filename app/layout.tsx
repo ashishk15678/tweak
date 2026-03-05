@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Clarity from "@microsoft/clarity";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "DesignTweak — Style Explorer",
@@ -30,6 +31,7 @@ export default function RootLayout({
         />
       </head>
       <body>{children}</body>
+      <Analytics />
     </html>
   );
 }
